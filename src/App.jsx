@@ -9,6 +9,7 @@ import Shop from "./pages/shop.jsx";
 import WishList from "./pages/wishlist.jsx";
 import { instance } from "./utils/use-request.js";
 import Login from "./pages/login.jsx";
+import Cart from "./pages/Cart.jsx";
 
 function App() {
    const [products, setProducts] = useState([]);
@@ -17,6 +18,8 @@ function App() {
    const [isLogged, setIsLogged] = useState(() =>
       localStorage.getItem("access_token")
    );
+
+   const [cartProducts, setCartProducts] = useState([]);
 
    const getData = async () => {
       const data = await instance.get("/user");
@@ -78,11 +81,32 @@ function App() {
                      />
                   }
                />
-               <Route path="/product/:productID" element={<SingleProduct />} />
+               <Route
+                  path="/product/:productID"
+                  element={
+                     <SingleProduct
+                        setCartProducts={setCartProducts}
+                        cartProducts={cartProducts}
+                        wishList={wishList}
+                        setWishList={setWishList}
+                     />
+                  }
+               />
+
                <Route
                   path="/wishlist"
                   element={
                      <WishList wishList={wishList} setWishList={setWishList} />
+                  }
+               />
+               <Route
+                  path="/cart"
+                  element={
+                     <Cart
+                        products={products}
+                        setCartProducts={setCartProducts}
+                        cartProducts={cartProducts}
+                     />
                   }
                />
                <Route
