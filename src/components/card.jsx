@@ -34,14 +34,15 @@ function Card({
          >
             {badgeText}
          </span>
+
          <span
             onClick={handleClick}
             className={`${badgeVariants({
                // variant: "destructive",
-            })} absolute top-0 right-0 rounded-none`}
+            })} absolute top-2 right-0 rounded-none`}
             style={{ background: "transparent", fontSize: 24 }}
          >
-            {!isLiked ? "❤️" : "😒"}
+            {!isLiked ? "❤️" : "🤍"}
          </span>
          <img
             src={imgSrc}
