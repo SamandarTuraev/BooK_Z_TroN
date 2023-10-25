@@ -7,6 +7,8 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { genres } from "@/constants/genre";
 import { Button } from "@/components/ui/button";
 
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+
 function Shop({
    products,
    selectedGenres,
@@ -139,7 +141,7 @@ function Shop({
                      formatLabel={(value) => `${value} `}
                   />
                </div>
-               <div className="mt-16 ms-8">
+               <div className="mt-16 w-[100%] m-[auto]">
                   <h2 className=" text-2xl  mb-4"> Category</h2>
                   {genres.map((genre) => (
                      <div
@@ -167,23 +169,32 @@ function Shop({
                   ))}
                </div>
 
-               <div className="mt-8">
-                  <label>
-                     <input type="checkbox" />
-                     <p>4 stars or above</p>
-                  </label>
-                  <label>
-                     <input type="checkbox" />
-                     <p>3 stars or above</p>
-                  </label>
-                  <label>
-                     <input type="checkbox" />
-                     <p>2 stars or above</p>
-                  </label>
-                  <label>
-                     <input type="checkbox" />
-                     <p>1 stars or above</p>
-                  </label>
+               <div className="mt-8 w-auto ">
+                  <h2 className=" text-2xl  mb-4"> Rating</h2>
+                  <RadioGroup defaultValue="option-one">
+                     <div className="flex items-center space-x-2 mb-2 ">
+                        <RadioGroupItem value="option-one" id="option-one" />
+                        <Label htmlFor="option-one">4 stars or above</Label>
+                     </div>
+
+                     <div className="flex items-center space-x-2 mb-2">
+                        <RadioGroupItem value="option-two" id="option-two" />
+                        <Label htmlFor="option-two">3 stars or above</Label>
+                     </div>
+
+                     <div className="flex items-center space-x-2 mb-2">
+                        <RadioGroupItem
+                           value="option-three"
+                           id="option-three"
+                        />
+                        <Label htmlFor="option-three">2 stars or above</Label>
+                     </div>
+
+                     <div className="flex items-center space-x-2 mb-2">
+                        <RadioGroupItem value="option-four" id="option-four" />
+                        <Label htmlFor="option-four">1 stars or above</Label>
+                     </div>
+                  </RadioGroup>
                </div>
             </div>
 
