@@ -27,7 +27,7 @@ function NewArrivals({ wishList, setWishList }) {
    };
 
    return (
-      <div className="flex justify-between">
+      <div className="flex justify-between mb-4">
          {arrivals?.map((arrival) => (
             <Card
                key={arrival._id}

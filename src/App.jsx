@@ -36,14 +36,14 @@ function App() {
       })();
       getData();
    }, []);
-
+   console.log(wishList);
    const handleLikeBtnClick = async (id) => {
       const el = wishList.find((wishItem) => wishItem._id === id);
 
       if (!el) {
          const product = products.find((arr) => arr._id === id);
          setWishList((prev) => [...prev, product]);
-         await instance.patch("/wishlist", {
+         await instance.post("/wishlist", {
             productdetails: product,
          });
       } else {
@@ -55,7 +55,12 @@ function App() {
    return (
       <BrowserRouter>
          <Layout>
-            <Header isLogged={isLogged} setIsLogged={setIsLogged} />
+            <Header
+               isLogged={isLogged}
+               setIsLogged={setIsLogged}
+               cartProducts={cartProducts}
+               wishList={wishList}
+            />
             <Routes>
                <Route
                   path="/"
@@ -92,7 +97,6 @@ function App() {
                      />
                   }
                />
-
                <Route
                   path="/wishlist"
                   element={
@@ -103,9 +107,11 @@ function App() {
                   path="/cart"
                   element={
                      <Cart
-                        products={products}
                         setCartProducts={setCartProducts}
                         cartProducts={cartProducts}
+                        wishList={wishList}
+                        setWishList={setWishList}
+                        products={products}
                      />
                   }
                />

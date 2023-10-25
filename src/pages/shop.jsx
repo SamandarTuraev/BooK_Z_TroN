@@ -88,63 +88,127 @@ function Shop({
    };
 
    return (
-      <div>
-         <Button onClick={onClear} className="mb-5">
-            Clear Filter
-         </Button>
-         <Slider
-            defaultValue={[sliderValues.min, sliderValues.max]}
-            max={sliderValues?.max}
-            min={0}
-            step={0.5}
-            value={range}
-            onValueChange={handleRangeChange}
-            formatLabel={(value) => `${value} `}
-         />
-         <div className="mt-8">
-            {genres.map((genre) => (
-               <div
-                  className="flex items-center space-x-2 mt-2"
-                  key={genre.title}
-               >
-                  <Checkbox
-                     id={genre.title}
-                     checked={
-                        selectedGenres.findIndex(
-                           (gr) => gr.title == genre.title
-                        ) !== -1
-                     }
-                     onCheckedChange={() => handleGenreChange(genre.title)}
-                  />
-                  <Label
-                     htmlFor={genre.title}
-                     className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                  >
-                     {genre.title}
-                  </Label>
+      <>
+         <h1 className="text-center text-4xl mt-4 mb-8">
+            {filteredProducts.length} items in Shop
+         </h1>
+         <div className=" flex gap-12">
+            <div className="w-1/4">
+               <div className="flex justify-between items-center mb-5">
+                  <h2 className="text-2xl">Filters</h2>
+                  <Button onClick={onClear}>Clear Filter</Button>
                </div>
-            ))}
-         </div>
-
-         <div className="flex justify-around mt-8 gap-5 flex-wrap">
-            {filteredProducts.length ? (
-               filteredProducts.map((product) => (
-                  <Card
-                     key={product._id}
-                     {...product}
-                     handleLikeBtnClick={handleLikeBtnClick}
-                     isLiked={
-                        wishList.findIndex(
-                           (wishItem) => wishItem._id === product._id
-                        ) === -1
-                     }
+               <div className=" mt-8">
+                  <h2 className="text-center text-2xl  mb-12"> Price</h2>
+                  <div className="flex justify-center gap-3 mb-4">
+                     <span>Min</span>
+                     <input
+                        type="number"
+                        defaultValue={0}
+                        value={range[0]}
+                        min="0"
+                        max="100"
+                        style={{
+                           width: "80px",
+                           textAlign: "center",
+                           border: "1px solid black",
+                        }}
+                        onChange={(e) => setRange([e.target.value, range[1]])}
+                     />
+                     <span>- Max</span>
+                     <input
+                        type="text"
+                        defaultValue={1000}
+                        value={range[1]}
+                        min="0"
+                        style={{
+                           width: "80px",
+                           textAlign: "center",
+                           border: "1px solid black",
+                        }}
+                        onChange={(e) => setRange([range[0], e.target.value])}
+                     />
+                  </div>
+                  <Slider
+                     defaultValue={[sliderValues.min, sliderValues.max]}
+                     max={sliderValues?.max}
+                     min={0}
+                     step={1}
+                     value={range}
+                     onValueChange={handleRangeChange}
+                     formatLabel={(value) => `${value} `}
                   />
-               ))
-            ) : (
-               <h1>Not found</h1>
-            )}
+               </div>
+               <div className="mt-16 ms-8">
+                  <h2 className=" text-2xl  mb-4"> Category</h2>
+                  {genres.map((genre) => (
+                     <div
+                        className="flex items-center space-x-2 mt-2"
+                        key={genre.title}
+                     >
+                        <Checkbox
+                           id={genre.title}
+                           checked={
+                              selectedGenres.findIndex(
+                                 (gr) => gr.title == genre.title
+                              ) !== -1
+                           }
+                           onCheckedChange={() =>
+                              handleGenreChange(genre.title)
+                           }
+                        />
+                        <Label
+                           htmlFor={genre.title}
+                           className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                        >
+                           {genre.title}
+                        </Label>
+                     </div>
+                  ))}
+               </div>
+
+               <div className="mt-8">
+                  <label>
+                     <input type="checkbox" />
+                     <p>4 stars or above</p>
+                  </label>
+                  <label>
+                     <input type="checkbox" />
+                     <p>3 stars or above</p>
+                  </label>
+                  <label>
+                     <input type="checkbox" />
+                     <p>2 stars or above</p>
+                  </label>
+                  <label>
+                     <input type="checkbox" />
+                     <p>1 stars or above</p>
+                  </label>
+               </div>
+            </div>
+
+            <div className="w-3/4">
+               <div className="flex justify-around  gap-5 flex-wrap">
+                  {filteredProducts.length ? (
+                     filteredProducts.map((product) => (
+                        <Card
+                           key={product._id}
+                           {...product}
+                           handleLikeBtnClick={handleLikeBtnClick}
+                           isLiked={
+                              wishList.findIndex(
+                                 (wishItem) => wishItem._id === product._id
+                              ) === -1
+                           }
+                        />
+                     ))
+                  ) : (
+                     <h1>Not found</h1>
+                  )}
+               </div>
+            </div>
          </div>
-      </div>
+      </>
    );
 }
 export default Shop;
