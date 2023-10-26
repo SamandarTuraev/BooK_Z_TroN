@@ -1,15 +1,16 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Home from "./pages/home.jsx";
+import { instance } from "./utils/use-request.js";
 
+import Home from "./pages/home.jsx";
 import Header from "./components/header.jsx";
 import Layout from "./components/layout.jsx";
 import SingleProduct from "./pages/single-product.jsx";
 import Shop from "./pages/shop.jsx";
 import WishList from "./pages/wishlist.jsx";
-import { instance } from "./utils/use-request.js";
 import Login from "./pages/login.jsx";
 import Cart from "./pages/Cart.jsx";
+import Protected from "./components/protected.jsx";
 
 function App() {
    const [products, setProducts] = useState([]);
@@ -18,7 +19,6 @@ function App() {
    const [isLogged, setIsLogged] = useState(() =>
       localStorage.getItem("access_token")
    );
-
    const [cartProducts, setCartProducts] = useState([]);
 
    const getData = async () => {
@@ -89,12 +89,14 @@ function App() {
                <Route
                   path="/product/:productID"
                   element={
-                     <SingleProduct
-                        setCartProducts={setCartProducts}
-                        cartProducts={cartProducts}
-                        wishList={wishList}
-                        setWishList={setWishList}
-                     />
+                     <Protected isLogged={isLogged}>
+                        <SingleProduct
+                           setCartProducts={setCartProducts}
+                           cartProducts={cartProducts}
+                           wishList={wishList}
+                           setWishList={setWishList}
+                        />
+                     </Protected>
                   }
                />
                <Route
