@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { badgeVariants } from "@/components/ui/badge";
 import { useNavigate } from "react-router-dom";
+import { toast } from "./ui/use-toast";
 
 function Card({
    bookName,
@@ -21,8 +22,17 @@ function Card({
 
    const handleClick = (e) => {
       e.stopPropagation();
-      handleLikeBtnClick(_id);
+      if (isLogged == "") {
+         toast({
+            variant: "destructive",
+            title: " No Login ",
+            description: "enter your login password and register",
+         });
+      } else {
+         handleLikeBtnClick(_id);
+      }
    };
+
    console.log(isLogged, "sf");
    return (
       <div
