@@ -23,6 +23,7 @@ function Shop({
    });
    const [range, setRange] = useState([sliderValues?.min, sliderValues?.max]);
    const [filteredProducts, setFilteredProducts] = useState([]);
+   const [latestProducts, setLatestProducts] = useState([]);
 
    const handleRangeChange = (value) => {
       setRange(value);
@@ -70,6 +71,7 @@ function Shop({
       );
 
       setFilteredProducts([...newProducts]);
+      setLatestProducts([...newProducts]);
    }, [range, selectedGenres]);
 
    useEffect(() => {
@@ -92,9 +94,9 @@ function Shop({
 
    const onChangeRating = (rating) => {
       if (rating == "all") {
-         setFilteredProducts([...products]);
+         setFilteredProducts([...latestProducts]);
       } else {
-         const newData = products?.filter(
+         const newData = latestProducts?.filter(
             (data) => Number(data.rating) == rating
          );
          setFilteredProducts([...newData]);
