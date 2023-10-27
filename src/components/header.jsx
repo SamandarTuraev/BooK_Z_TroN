@@ -1,19 +1,24 @@
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Button } from "./ui/button";
 
 function Header({ isLogged, setIsLogged, cartProducts, wishList }) {
    const onLogout = () => {
       localStorage.removeItem("access_token");
-      setIsLogged(false);
+      setIsLogged("");
    };
+   const location = useLocation();
+   let path = location.pathname;
+   console.log(path);
    return (
       <header className="flex justify-between py-6 px-2  border-b-2">
          <Link to={"/"} className="rounded-lg bg-yellow-400 p-2">
             BooK_Z_TroN
          </Link>
-         <div>
-            {isLogged ? (
+         <div className="flex gap-3">
+            {path == "/login" ? (
+               ""
+            ) : (
                <div className="flex gap-3">
                   <Link
                      to={"/shop"}
@@ -41,15 +46,22 @@ function Header({ isLogged, setIsLogged, cartProducts, wishList }) {
                   >
                      Orders
                   </Link>
-                  <Button onClick={onLogout}>Logout</Button>
+                  {isLogged == "" ? (
+                     ""
+                  ) : (
+                     <Link to={"/"}>
+                        <Button onClick={onLogout}>Logout</Button>
+                     </Link>
+                  )}
                </div>
-            ) : (
-               <Link
-                  to={"/login"}
-                  className="p-2 text-white bg-slate-500 text-white"
-               >
-                  Login
+            )}
+
+            {isLogged == "" ? (
+               <Link to={"/login"} className="text-white text-white">
+                  <Button>Login</Button>
                </Link>
+            ) : (
+               ""
             )}
          </div>
       </header>

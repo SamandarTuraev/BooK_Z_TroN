@@ -3,7 +3,7 @@ import { instance } from "@/utils/use-request";
 import { useEffect, useState } from "react";
 import Card from "./card";
 
-function NewArrivals({ wishList, setWishList }) {
+function NewArrivals({ wishList, setWishList, isLogged }) {
    const [arrivals, setArrivals] = useState();
    useEffect(() => {
       // eslint-disable-next-line no-extra-semi
@@ -32,6 +32,7 @@ function NewArrivals({ wishList, setWishList }) {
             <Card
                key={arrival._id}
                {...arrival}
+               isLogged={isLogged}
                isLiked={
                   wishList.findIndex(
                      (wishItem) => wishItem._id === arrival?._id
@@ -48,4 +49,5 @@ export default NewArrivals;
 NewArrivals.propTypes = {
    wishList: PropTypes.array,
    setWishList: PropTypes.func,
+   isLogged: PropTypes.any,
 };

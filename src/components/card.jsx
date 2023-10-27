@@ -15,6 +15,7 @@ function Card({
    genre,
    isLiked,
    handleLikeBtnClick,
+   isLogged,
 }) {
    const navigate = useNavigate();
 
@@ -22,6 +23,7 @@ function Card({
       e.stopPropagation();
       handleLikeBtnClick(_id);
    };
+   console.log(isLogged, "sf");
    return (
       <div
          className="w-[250px]  border border-gray-500 cursor-pointer p-1 text-center relative hover:shadow-[0_0px_20px_rgba(0,0,0,0.5)]"
@@ -77,4 +79,5 @@ Card.propTypes = {
    genre: PropTypes.string,
    isLiked: PropTypes.any,
    handleLikeBtnClick: PropTypes.func,
+   isLogged: PropTypes.any,
 };

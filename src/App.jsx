@@ -4,7 +4,7 @@ import { instance } from "./utils/use-request.js";
 
 import Home from "./pages/home.jsx";
 import Header from "./components/header.jsx";
-import Layout from "./components/layout.jsx";
+// import Layout from "./components/layout.jsx";
 import SingleProduct from "./pages/single-product.jsx";
 import Shop from "./pages/shop.jsx";
 import WishList from "./pages/wishlist.jsx";
@@ -54,7 +54,7 @@ function App() {
 
    return (
       <BrowserRouter>
-         <Layout>
+         <div className="container">
             <Header
                isLogged={isLogged}
                setIsLogged={setIsLogged}
@@ -70,20 +70,23 @@ function App() {
                         setSelectedGenres={setSelectedGenres}
                         wishList={wishList}
                         setWishList={setWishList}
+                        isLogged={isLogged}
                      />
                   }
                />
                <Route
                   path="/shop"
                   element={
-                     <Shop
-                        handleLikeBtnClick={handleLikeBtnClick}
-                        products={products}
-                        selectedGenres={selectedGenres}
-                        setSelectedGenres={setSelectedGenres}
-                        wishList={wishList}
-                        setWishList={setWishList}
-                     />
+                     <Protected isLogged={isLogged}>
+                        <Shop
+                           handleLikeBtnClick={handleLikeBtnClick}
+                           products={products}
+                           selectedGenres={selectedGenres}
+                           setSelectedGenres={setSelectedGenres}
+                           wishList={wishList}
+                           setWishList={setWishList}
+                        />
+                     </Protected>
                   }
                />
                <Route
@@ -102,19 +105,26 @@ function App() {
                <Route
                   path="/wishlist"
                   element={
-                     <WishList wishList={wishList} setWishList={setWishList} />
+                     <Protected isLogged={isLogged}>
+                        <WishList
+                           wishList={wishList}
+                           setWishList={setWishList}
+                        />
+                     </Protected>
                   }
-               />
+               />{" "}
                <Route
                   path="/cart"
                   element={
-                     <Cart
-                        setCartProducts={setCartProducts}
-                        cartProducts={cartProducts}
-                        wishList={wishList}
-                        setWishList={setWishList}
-                        products={products}
-                     />
+                     <Protected isLogged={isLogged}>
+                        <Cart
+                           setCartProducts={setCartProducts}
+                           cartProducts={cartProducts}
+                           wishList={wishList}
+                           setWishList={setWishList}
+                           products={products}
+                        />
+                     </Protected>
                   }
                />
                <Route
@@ -122,7 +132,7 @@ function App() {
                   element={<Login setIsLogged={setIsLogged} />}
                />
             </Routes>
-         </Layout>
+         </div>
       </BrowserRouter>
    );
 }

@@ -2,7 +2,13 @@ import PropTypes from "prop-types";
 import Genres from "@/components/genres";
 import NewArrivals from "@/components/new-arrivals";
 import img from "../img/Screenshot.png";
-function Home({ selectedGenres, setSelectedGenres, wishList, setWishList }) {
+function Home({
+   selectedGenres,
+   setSelectedGenres,
+   wishList,
+   setWishList,
+   isLogged,
+}) {
    return (
       <div className="mt-3">
          <img src={img} alt="img" className="mb-5" style={{ width: "100%" }} />
@@ -15,7 +21,11 @@ function Home({ selectedGenres, setSelectedGenres, wishList, setWishList }) {
          </div>
          <dev>
             <h2 className="text-2xl text-center mb-4"> New Arrivals</h2>
-            <NewArrivals setWishList={setWishList} wishList={wishList} />
+            <NewArrivals
+               setWishList={setWishList}
+               wishList={wishList}
+               isLogged={isLogged}
+            />
          </dev>
       </div>
    );
@@ -27,4 +37,5 @@ Home.propTypes = {
    setSelectedGenres: PropTypes.func,
    wishList: PropTypes.array,
    setWishList: PropTypes.func,
+   isLogged: PropTypes.any,
 };

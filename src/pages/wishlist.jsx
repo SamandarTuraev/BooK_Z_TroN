@@ -3,7 +3,7 @@ import Card from "@/components/card";
 
 import { instance } from "@/utils/use-request";
 
-function WishList({ wishList, setWishList }) {
+function WishList({ wishList, setWishList, isLogged }) {
    const click = async (id) => {
       setWishList((prev) => prev.filter((wishItem) => wishItem._id !== id));
       await instance.delete("/wishlist/" + id);
@@ -19,6 +19,7 @@ function WishList({ wishList, setWishList }) {
                   <Card
                      key={wishItem._id}
                      {...wishItem}
+                     isLogged={isLogged}
                      handleLikeBtnClick={click}
                   />
                ))
@@ -34,4 +35,5 @@ export default WishList;
 WishList.propTypes = {
    wishList: PropTypes.array,
    setWishList: PropTypes.func,
+   isLogged: PropTypes.any,
 };

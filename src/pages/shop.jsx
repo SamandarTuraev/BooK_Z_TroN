@@ -15,6 +15,7 @@ function Shop({
    setSelectedGenres,
    handleLikeBtnClick,
    wishList,
+   isLogged,
 }) {
    const [sliderValues, setSliderValues] = useState({
       min: 0,
@@ -205,6 +206,7 @@ function Shop({
                         <Card
                            key={product._id}
                            {...product}
+                           isLogged={isLogged}
                            handleLikeBtnClick={handleLikeBtnClick}
                            isLiked={
                               wishList.findIndex(
@@ -232,4 +234,5 @@ Shop.propTypes = {
    setSelectedGenres: PropTypes.func,
    handleLikeBtnClick: PropTypes.func,
    wishList: PropTypes.array,
+   isLogged: PropTypes.any,
 };
