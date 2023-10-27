@@ -33,7 +33,6 @@ function Card({
       }
    };
 
-   console.log(isLogged, "sf");
    return (
       <div
          className="w-[250px]  border border-gray-500 cursor-pointer p-1 text-center relative hover:shadow-[0_0px_20px_rgba(0,0,0,0.5)]"

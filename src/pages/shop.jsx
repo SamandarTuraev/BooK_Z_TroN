@@ -90,6 +90,19 @@ function Shop({
       setRange([0, sliderValues.max]);
    };
 
+   const onChangeRating = (rating) => {
+      if (rating == "all") {
+         setFilteredProducts([...products]);
+      } else {
+         const newData = products?.filter(
+            (data) => Number(data.rating) == rating
+         );
+         setFilteredProducts([...newData]);
+      }
+   };
+
+   console.log(filteredProducts);
+
    return (
       <>
          <h1 className="text-center text-4xl mt-4 mb-8">
@@ -172,28 +185,44 @@ function Shop({
 
                <div className="mt-8 w-auto ">
                   <h2 className=" text-2xl  mb-4"> Rating</h2>
-                  <RadioGroup defaultValue="option-one">
-                     <div className="flex items-center space-x-2 mb-2 ">
-                        <RadioGroupItem value="option-one" id="option-one" />
-                        <Label htmlFor="option-one">4 stars or above</Label>
+                  <RadioGroup onChange={(e) => console.log(e.target)}>
+                     <div
+                        className="flex items-center space-x-2 mb-2 "
+                        onClick={() => onChangeRating("all")}
+                     >
+                        <RadioGroupItem value="all" id="all" />
+                        <Label htmlFor="all"> All stars or above</Label>
+                     </div>
+                     <div
+                        className="flex items-center space-x-2 mb-2 "
+                        onClick={() => onChangeRating(4)}
+                     >
+                        <RadioGroupItem value="4" id="one" />
+                        <Label htmlFor="one">4 stars or above</Label>
                      </div>
 
-                     <div className="flex items-center space-x-2 mb-2">
-                        <RadioGroupItem value="option-two" id="option-two" />
-                        <Label htmlFor="option-two">3 stars or above</Label>
+                     <div
+                        className="flex items-center space-x-2 mb-2"
+                        onClick={() => onChangeRating(3)}
+                     >
+                        <RadioGroupItem value="3" id="two" />
+                        <Label htmlFor="two">3 stars or above</Label>
                      </div>
 
-                     <div className="flex items-center space-x-2 mb-2">
-                        <RadioGroupItem
-                           value="option-three"
-                           id="option-three"
-                        />
-                        <Label htmlFor="option-three">2 stars or above</Label>
+                     <div
+                        className="flex items-center space-x-2 mb-2"
+                        onClick={() => onChangeRating(2)}
+                     >
+                        <RadioGroupItem value="2" id="three" />
+                        <Label htmlFor="three">2 stars or above</Label>
                      </div>
 
-                     <div className="flex items-center space-x-2 mb-2">
-                        <RadioGroupItem value="option-four" id="option-four" />
-                        <Label htmlFor="option-four">1 stars or above</Label>
+                     <div
+                        className="flex items-center space-x-2 mb-2"
+                        onClick={() => onChangeRating(1)}
+                     >
+                        <RadioGroupItem value="1" id="four" />
+                        <Label htmlFor="four">1 stars or above</Label>
                      </div>
                   </RadioGroup>
                </div>

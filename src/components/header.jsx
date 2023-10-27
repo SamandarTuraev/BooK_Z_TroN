@@ -9,7 +9,7 @@ function Header({ isLogged, setIsLogged, cartProducts, wishList }) {
    };
    const location = useLocation();
    let path = location.pathname;
-   console.log(path);
+
    return (
       <header className="flex justify-between py-6 px-2  border-b-2">
          <Link to={"/"} className="rounded-lg bg-yellow-400 p-2">
