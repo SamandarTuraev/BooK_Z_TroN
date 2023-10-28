@@ -41,7 +41,7 @@ function Header({ isLogged, setIsLogged, cartProducts, wishList }) {
                      Cart
                   </Link>
                   <Link
-                     to={"/"}
+                     to={"/order"}
                      className="rounded-lg bg-blue-400 p-2 text-white"
                   >
                      Orders

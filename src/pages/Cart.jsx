@@ -1,15 +1,12 @@
 import BasketCard from "@/components/basketCard";
 import PropTypes from "prop-types";
-import { useState } from "react";
+
 import { Link } from "react-router-dom";
 import basketIcon from "../Assets/icons/basket-icon.svg";
 
 const Cart = ({ cartProducts, setCartProducts, wishList, setWishList }) => {
    return (
       <>
-         <h1 className="text-center text-4xl mt-4 ">
-            {cartProducts.length} items in Cart
-         </h1>
          {cartProducts.length ? (
             <div className="flex justify-center gap-16 mt-6">
                <div className="w-2/5">

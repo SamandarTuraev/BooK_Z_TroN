@@ -8,6 +8,7 @@ import { genres } from "@/constants/genre";
 import { Button } from "@/components/ui/button";
 
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Input } from "postcss";
 
 function Shop({
    products,
@@ -107,17 +108,18 @@ function Shop({
 
    return (
       <>
-         <h1 className="text-center text-4xl mt-4 mb-8">
-            {filteredProducts.length} items in Shop
-         </h1>
-         <div className=" flex gap-12">
-            <div className="w-1/4">
-               <div className="flex justify-between items-center mb-5">
+         <div className=" flex gap-12 h-[86vh]">
+            <div className="w-1/4 overflow-y-scroll pr-8">
+               <div className="flex justify-between items-center mb-5 mt-8">
                   <h2 className="text-2xl">Filters</h2>
                   <Button onClick={onClear}>Clear Filter</Button>
                </div>
                <div className=" mt-8">
-                  <h2 className="text-center text-2xl  mb-12"> Price</h2>
+                  <h2 className="text-center text-2xl  mb-4">Search</h2>
+                  <div className="mb-4">
+                     <input type="text p-4" placeholder="Search..." />
+                  </div>
+                  <h2 className="text-center text-2xl  mb-8"> Price</h2>
                   <div className="flex justify-center gap-3 mb-4">
                      <span>Min</span>
                      <input
@@ -230,7 +232,10 @@ function Shop({
                </div>
             </div>
 
-            <div className="w-3/4">
+            <div className="w-3/4 overflow-y-scroll">
+               <h1 className="text-center text-4xl mt-4 mb-8 text-bold">
+                  Showing {filteredProducts.length} products
+               </h1>
                <div className="flex justify-around  gap-5 flex-wrap">
                   {filteredProducts.length ? (
                      filteredProducts.map((product) => (

@@ -11,6 +11,7 @@ import WishList from "./pages/wishlist.jsx";
 import Login from "./pages/login.jsx";
 import Cart from "./pages/Cart.jsx";
 import Protected from "./components/protected.jsx";
+import Order from "./pages/order.jsx";
 
 function App() {
    const [products, setProducts] = useState([]);
@@ -85,6 +86,7 @@ function App() {
                            setSelectedGenres={setSelectedGenres}
                            wishList={wishList}
                            setWishList={setWishList}
+                           isLogged={isLogged}
                         />
                      </Protected>
                   }
@@ -109,6 +111,7 @@ function App() {
                         <WishList
                            wishList={wishList}
                            setWishList={setWishList}
+                           isLogged={isLogged}
                         />
                      </Protected>
                   }
@@ -124,6 +127,14 @@ function App() {
                            setWishList={setWishList}
                            products={products}
                         />
+                     </Protected>
+                  }
+               />
+               <Route
+                  path="/order"
+                  element={
+                     <Protected isLogged={isLogged}>
+                        <Order />
                      </Protected>
                   }
                />
