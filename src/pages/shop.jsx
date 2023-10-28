@@ -115,6 +115,24 @@ function Shop({
       }
       setSearch("");
    };
+
+   const onChangeSortBy = (sort) => {
+      if (sort == "mix") {
+         setFilteredProducts(latestProducts);
+      } else if (sort == 1) {
+         setFilteredProducts([
+            ...filteredProducts.sort(
+               (a, b) => a.discountedPrice - b.discountedPrice
+            ),
+         ]);
+      } else {
+         setFilteredProducts([
+            ...filteredProducts.sort(
+               (a, b) => b.discountedPrice - a.discountedPrice
+            ),
+         ]);
+      }
+   };
    console.log(filteredProducts);
 
    return (
@@ -256,6 +274,36 @@ function Shop({
                      </div>
                   </RadioGroup>
                </div>
+               <div className="mt-8 w-auto ">
+                  <h2 className=" text-2xl  mb-4"> Sort By</h2>
+                  <RadioGroup
+                     onChange={(e) => console.log(e.target)}
+                     defaultValue="mix"
+                  >
+                     <div
+                        className="flex items-center space-x-2 mb-2 "
+                        onClick={() => onChangeSortBy("mix")}
+                     >
+                        <RadioGroupItem value="mix" id="mix" />
+                        <Label htmlFor="mix"> Price mixed up</Label>
+                     </div>
+                     <div
+                        className="flex items-center space-x-2 mb-2 "
+                        onClick={() => onChangeSortBy(1)}
+                     >
+                        <RadioGroupItem value="1" id="low" />
+                        <Label htmlFor="low">Price - Low to High</Label>
+                     </div>
+
+                     <div
+                        className="flex items-center space-x-2 mb-2"
+                        onClick={() => onChangeSortBy(2)}
+                     >
+                        <RadioGroupItem value="2" id="high" />
+                        <Label htmlFor="high">Price - High to Low</Label>
+                     </div>
+                  </RadioGroup>
+               </div>
             </div>
 
             <div className="w-3/4 overflow-y-scroll">
@@ -278,7 +326,7 @@ function Shop({
                         />
                      ))
                   ) : (
-                     <h1>Not found</h1>
+                     <h1>Not found ...</h1>
                   )}
                </div>
             </div>
