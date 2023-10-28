@@ -2,6 +2,9 @@ import PropTypes from "prop-types";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "./ui/button";
 
+import { AiFillShopping, AiOutlineHeart } from "react-icons/ai";
+import { SlBasket } from "react-icons/sl";
+import { BsShop } from "react-icons/bs";
 function Header({ isLogged, setIsLogged, cartProducts, wishList }) {
    const onLogout = () => {
       localStorage.removeItem("access_token");
@@ -22,29 +25,31 @@ function Header({ isLogged, setIsLogged, cartProducts, wishList }) {
                <div className="flex gap-3">
                   <Link
                      to={"/shop"}
-                     className="rounded-lg bg-blue-400 p-2 text-white"
+                     className="rounded-full bg-[#0e7490] flex items-center justify-center w-[40px] h-[40px] transition-all Alink hover:bg-[#05475a]"
                   >
-                     Shop
+                     {<BsShop className="text-white text-lg" />}
                   </Link>
                   <Link
                      to={"/wishlist"}
-                     className="rounded-lg bg-blue-400 p-2 text-white Alink"
+                     className="rounded-full bg-[#0e7490] flex items-center justify-center w-[40px] h-[40px] transition-all Alink hover:bg-[#05475a]"
                   >
                      <span className="linkTop"> {wishList.length} </span>
-                     Wishlist
+                     {<AiOutlineHeart className="text-white text-lg" />}
                   </Link>
+
                   <Link
                      to={"/cart"}
-                     className="rounded-lg bg-blue-400 p-2 text-white Alink"
+                     className="rounded-full bg-[#0e7490] flex items-center justify-center w-[40px] h-[40px] transition-all Alink hover:bg-[#05475a]"
                   >
                      <span className="linkTop"> {cartProducts.length} </span>
-                     Cart
+                     {<SlBasket className="text-white text-lg" />}
                   </Link>
+
                   <Link
                      to={"/order"}
-                     className="rounded-lg bg-blue-400 p-2 text-white"
+                     className="rounded-full bg-[#0e7490] flex items-center justify-center w-[40px] h-[40px] transition-all Alink hover:bg-[#05475a]"
                   >
-                     Orders
+                     {<AiFillShopping className="text-white text-lg" />}
                   </Link>
                   {isLogged == "" ? (
                      ""

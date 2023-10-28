@@ -81,7 +81,7 @@ function SingleProduct({
 
             <div className="mt-24 flex gap-4">
                <button
-                  className="w-1/2 p-2  text-white"
+                  className="w-1/2 p-2  text-white rounded"
                   style={{
                      backgroundColor: "rgb(219, 107, 138)",
                      cursor: "pointer",
@@ -91,7 +91,7 @@ function SingleProduct({
                   Add to Wishlist
                </button>
                <button
-                  className="w-1/2 p-2  text-white "
+                  className="w-1/2 p-2  text-white rounded "
                   style={{
                      backgroundColor: "rgb(255, 182, 73)",
                      cursor: "pointer",

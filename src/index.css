@@ -74,6 +74,9 @@
       @apply bg-background text-foreground;
    }
 }
+html {
+   font-size: font-sans;
+}
 .Alink {
    position: relative;
 }
