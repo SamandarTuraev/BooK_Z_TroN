@@ -8,7 +8,7 @@ import { genres } from "@/constants/genre";
 import { Button } from "@/components/ui/button";
 
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Input } from "postcss";
+import { Input } from "@/components/ui/input";
 
 function Shop({
    products,
@@ -25,7 +25,8 @@ function Shop({
    const [range, setRange] = useState([sliderValues?.min, sliderValues?.max]);
    const [filteredProducts, setFilteredProducts] = useState([]);
    const [latestProducts, setLatestProducts] = useState([]);
-
+   const [search, setSearch] = useState("");
+   console.log(search);
    const handleRangeChange = (value) => {
       setRange(value);
    };
@@ -103,13 +104,23 @@ function Shop({
          setFilteredProducts([...newData]);
       }
    };
-
+   const onSearchBtn = () => {
+      if (search) {
+         const newData = latestProducts.filter((product) =>
+            product.bookName.toUpperCase().includes(search.toUpperCase())
+         );
+         setFilteredProducts([...newData]);
+      } else {
+         setFilteredProducts([...latestProducts]);
+      }
+      setSearch("");
+   };
    console.log(filteredProducts);
 
    return (
       <>
          <div className=" flex gap-12 h-[86vh]">
-            <div className="w-1/4 overflow-y-scroll pr-8">
+            <div className="w-1/4 overflow-y-scroll pr-8 ps-1">
                <div className="flex justify-between items-center mb-5 mt-8">
                   <h2 className="text-2xl">Filters</h2>
                   <Button onClick={onClear}>Clear Filter</Button>
@@ -117,10 +128,20 @@ function Shop({
                <div className=" mt-8">
                   <h2 className="text-center text-2xl  mb-4">Search</h2>
                   <div className="mb-4">
-                     <input type="text p-4" placeholder="Search..." />
+                     <div className="flex w-full max-w-sm items-center space-x-2">
+                        <Input
+                           type="text"
+                           value={search}
+                           onChange={(e) => setSearch(e.target.value)}
+                        />
+                        <Button type="button" onClick={onSearchBtn}>
+                           Search
+                        </Button>
+                     </div>
                   </div>
+
                   <h2 className="text-center text-2xl  mb-8"> Price</h2>
-                  <div className="flex justify-center gap-3 mb-4">
+                  <div className="flex justify-center gap-3 mb-8">
                      <span>Min</span>
                      <input
                         type="number"
@@ -149,6 +170,7 @@ function Shop({
                         onChange={(e) => setRange([range[0], e.target.value])}
                      />
                   </div>
+
                   <Slider
                      defaultValue={[sliderValues.min, sliderValues.max]}
                      max={sliderValues?.max}
@@ -159,6 +181,7 @@ function Shop({
                      formatLabel={(value) => `${value} `}
                   />
                </div>
+
                <div className="mt-16 w-[100%] m-[auto]">
                   <h2 className=" text-2xl  mb-4"> Category</h2>
                   {genres.map((genre) => (
@@ -189,7 +212,10 @@ function Shop({
 
                <div className="mt-8 w-auto ">
                   <h2 className=" text-2xl  mb-4"> Rating</h2>
-                  <RadioGroup onChange={(e) => console.log(e.target)}>
+                  <RadioGroup
+                     onChange={(e) => console.log(e.target)}
+                     defaultValue="all"
+                  >
                      <div
                         className="flex items-center space-x-2 mb-2 "
                         onClick={() => onChangeRating("all")}
