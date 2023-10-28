@@ -18,16 +18,14 @@ const BasketCard = ({
       _id,
    } = product;
 
-   const handleWishlistBtn = (id) => {
-      const el = wishList.find((cart) => cart._id === id);
-
-      if (!el) {
-         setWishList((prev) => [
-            ...prev,
-            cartProducts.find((arr) => arr._id === id),
-         ]);
-      }
-      console.log(wishList);
+   const handleWishlistAdd = (id) => {
+      setWishList((prev) => [
+         ...prev,
+         cartProducts.find((arr) => arr._id === id),
+      ]);
+   };
+   const handleWishlistRemove = (id) => {
+      setWishList((prev) => [...prev.filter((card) => card._id !== id)]);
    };
 
    const onDeldeteCart = (id) => {
@@ -71,16 +69,30 @@ const BasketCard = ({
             </h3>
 
             <div className="mt-4 ">
-               <button
-                  className="w-[100%] p-2  text-white rounded"
-                  style={{
-                     backgroundColor: "rgb(255, 182, 73)",
-                     cursor: "pointer",
-                  }}
-                  onClick={() => handleWishlistBtn(_id)}
-               >
-                  Add to Wishlist
-               </button>
+               {wishList.find((wishItem) => wishItem._id === _id) ? (
+                  <button
+                     className="w-[100%] p-2  text-white rounded "
+                     style={{
+                        backgroundColor: "red",
+                        cursor: "pointer",
+                     }}
+                     onClick={() => handleWishlistRemove(_id)}
+                  >
+                     Delete to Wishlist
+                  </button>
+               ) : (
+                  <button
+                     className="w-[100%] p-2  text-white rounded"
+                     style={{
+                        backgroundColor: "rgb(219, 107, 138)",
+                        cursor: "pointer",
+                     }}
+                     onClick={() => handleWishlistAdd(_id)}
+                  >
+                     Add to Wishlist
+                  </button>
+               )}
+
                <button
                   className="w-[100%] p-2 mt-2 text-white rounded "
                   style={{
