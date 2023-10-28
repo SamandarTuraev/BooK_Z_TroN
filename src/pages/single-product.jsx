@@ -44,20 +44,20 @@ function SingleProduct({
       setWishList((prev) => [...prev, products.find((arr) => arr._id === id)]);
    };
    const handleWishlistRemove = () => {
-      setWishList((prev) => [...prev.filter((card) => card._id != id)]);
+      setWishList((prev) => [...prev.filter((card) => card._id !== id)]);
    };
 
-   const handleCartBtn = () => {
-      const el = cartProducts.find((cart) => cart._id === id);
-
-      if (!el) {
-         setCartProducts((prev) => [
-            ...prev,
-            products.find((arr) => arr._id === id),
-         ]);
-      }
-      console.log(cartProducts);
+   const handleCartAdd = () => {
+      setCartProducts((prev) => [
+         ...prev,
+         products.find((arr) => arr._id === id),
+      ]);
    };
+
+   const handleCartRemove = () => {
+      setCartProducts((prev) => [...prev.filter((cart) => cart._id !== id)]);
+   };
+
    return (
       <div className="single-product flex gap-12 mt-5">
          <div className="single-product-right w-1/4">
@@ -79,7 +79,7 @@ function SingleProduct({
                   <button
                      className="w-1/2 p-2  text-white rounded "
                      style={{
-                        backgroundColor: "rgb(255, 182, 73)",
+                        backgroundColor: "red",
                         cursor: "pointer",
                      }}
                      onClick={handleWishlistRemove}
@@ -98,17 +98,29 @@ function SingleProduct({
                      Add to Wishlist
                   </button>
                )}
-
-               <button
-                  className="w-1/2 p-2  text-white rounded "
-                  style={{
-                     backgroundColor: "rgb(255, 182, 73)",
-                     cursor: "pointer",
-                  }}
-                  onClick={handleCartBtn}
-               >
-                  Add to Cart
-               </button>
+               {cartProducts.find((cart) => cart._id === id) ? (
+                  <button
+                     className="w-1/2 p-2  text-white rounded "
+                     style={{
+                        backgroundColor: "red",
+                        cursor: "pointer",
+                     }}
+                     onClick={handleCartRemove}
+                  >
+                     Delete to Cart
+                  </button>
+               ) : (
+                  <button
+                     className="w-1/2 p-2  text-white rounded "
+                     style={{
+                        backgroundColor: "rgb(255, 182, 73)",
+                        cursor: "pointer",
+                     }}
+                     onClick={handleCartAdd}
+                  >
+                     Add to Cart
+                  </button>
+               )}
             </div>
          </div>
       </div>
