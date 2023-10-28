@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import Genres from "@/components/genres";
 import NewArrivals from "@/components/new-arrivals";
-import img from "../img/Screenshot.png";
+import img from "../Assets/images/Screenshot.png";
 function Home({
    selectedGenres,
    setSelectedGenres,
