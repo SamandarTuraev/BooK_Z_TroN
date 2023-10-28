@@ -24,6 +24,7 @@ function SingleProduct({
       originalPrice,
       discountPercent,
    } = product;
+
    useEffect(() => {
       (async () => {
          const data = await instance.get("/home/products");
@@ -34,22 +35,16 @@ function SingleProduct({
    useEffect(() => {
       products.forEach((data) => {
          if (data._id == id) {
-            console.log("hello");
             setProduct(data);
          }
       });
-   }, [products]);
+   }, [products, product]);
 
-   const handleWishlistBtn = () => {
-      const el = wishList.find((wishItem) => wishItem._id === id);
-
-      if (!el) {
-         setWishList((prev) => [
-            ...prev,
-            products.find((arr) => arr._id === id),
-         ]);
-      }
-      console.log(wishList);
+   const handleWishlistAdd = () => {
+      setWishList((prev) => [...prev, products.find((arr) => arr._id === id)]);
+   };
+   const handleWishlistRemove = () => {
+      setWishList((prev) => [...prev.filter((card) => card._id != id)]);
    };
 
    const handleCartBtn = () => {
@@ -80,16 +75,30 @@ function SingleProduct({
             </h3>
 
             <div className="mt-24 flex gap-4">
-               <button
-                  className="w-1/2 p-2  text-white rounded"
-                  style={{
-                     backgroundColor: "rgb(219, 107, 138)",
-                     cursor: "pointer",
-                  }}
-                  onClick={handleWishlistBtn}
-               >
-                  Add to Wishlist
-               </button>
+               {wishList.find((wishItem) => wishItem._id === id) ? (
+                  <button
+                     className="w-1/2 p-2  text-white rounded "
+                     style={{
+                        backgroundColor: "rgb(255, 182, 73)",
+                        cursor: "pointer",
+                     }}
+                     onClick={handleWishlistRemove}
+                  >
+                     Delete to Wishlist
+                  </button>
+               ) : (
+                  <button
+                     className="w-1/2 p-2  text-white rounded"
+                     style={{
+                        backgroundColor: "rgb(219, 107, 138)",
+                        cursor: "pointer",
+                     }}
+                     onClick={handleWishlistAdd}
+                  >
+                     Add to Wishlist
+                  </button>
+               )}
+
                <button
                   className="w-1/2 p-2  text-white rounded "
                   style={{
