@@ -33,16 +33,16 @@ const BasketCard = ({
    };
 
    return (
-      <div className="single-product flex gap-4 mb-6">
-         <div className="single-product-right w-1/3">
+      <div className="single-product flex gap-8 mb-8">
+         <div className="single-product-right w-2/5">
             <img src={imgSrc} alt={imgSrc} style={{ width: "100%" }} />
          </div>
-         <div className="single-product-left w-2/3">
+         <div className="single-product-left w-3/5 ps-4 pt-2   ">
             <h2 className=" mb-2">{bookName}</h2>
             <hr />
             <h3 className=" mt-2"> Author: {author}</h3>
             <div>
-               Quantity{" "}
+               Quantity
                <button
                   className="bg-slate-500 px-2  text-white rounded-full "
                   onClick={() => setCount((prev) => prev - 1)}
