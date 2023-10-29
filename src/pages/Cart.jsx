@@ -3,8 +3,10 @@ import PropTypes from "prop-types";
 
 import { Link } from "react-router-dom";
 import basketIcon from "../Assets/icons/basket-icon.svg";
+import BillDetails from "@/components/billDetails";
 
 const Cart = ({ cartProducts, setCartProducts, wishList, setWishList }) => {
+   console.log(cartProducts, "cart");
    return (
       <>
          {cartProducts.length ? (
@@ -21,10 +23,7 @@ const Cart = ({ cartProducts, setCartProducts, wishList, setWishList }) => {
                      />
                   ))}
                </div>
-               <div className="w-2/5 p-6 border-2 border-current ">
-                  <h2 className="text-center text-4xl  mb-4"> Bill Details</h2>
-                  <div className="bg-black h-[0.5px]" />
-               </div>
+               <BillDetails cartProducts={cartProducts} />
             </div>
          ) : (
             <div className="py-16 mw-[100%] flex flex-col justify-center items-center mt-24">

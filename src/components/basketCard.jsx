@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 const BasketCard = ({
    cartProducts,
    setCartProducts,
@@ -7,7 +7,6 @@ const BasketCard = ({
    setWishList,
    product,
 }) => {
-   const [count, setCount] = useState(1);
    const {
       imgSrc,
       bookName,
@@ -17,6 +16,19 @@ const BasketCard = ({
       discountPercent,
       _id,
    } = product;
+
+   const [count, setCount] = useState(1);
+
+   const obj = { ...product, quantity: 1 };
+   useEffect(() => {
+      const newCartData = cartProducts.map((cart) => {
+         if (cart._id == obj._id) {
+            cart = { ...obj, quantity: count };
+         }
+         return cart;
+      });
+      setCartProducts([...newCartData]);
+   }, [count]);
 
    const handleWishlistAdd = (id) => {
       setWishList((prev) => [
@@ -41,30 +53,33 @@ const BasketCard = ({
             <h2 className=" mb-2 font-bold">{bookName}</h2>
             <hr />
             <h3 className=" mt-2">
-               {" "}
                <span className="font-bold">Author</span>: {author}
             </h3>
             <div>
                <span className="mr-4 font-bold"> Quantity </span>
                <button
                   className=" px-2   rounded-full border border-solid border-slate-300 text-center"
-                  onClick={() =>
-                     setCount((prev) => (prev == 0 ? prev : prev - 1))
-                  }
+                  onClick={() => {
+                     setCount((prev) => (prev == 0 ? prev : prev - 1));
+                  }}
                >
                   -
                </button>
                <input
                   type="number"
-                  defaultValue={1}
+                  defaultValue={"1"}
                   value={count}
                   className="border border-current w-[50px] m-4 text-center font-bold"
-                  onChange={(e) => setCount(e.target.value)}
+                  onChange={(e) => {
+                     setCount(e.target.value);
+                  }}
                   min="0"
                />
                <button
                   className=" px-2   rounded-full border border-solid border-slate-300 text-center"
-                  onClick={() => setCount((prev) => Number(prev) + 1)}
+                  onClick={() => {
+                     setCount((prev) => Number(prev) + 1);
+                  }}
                >
                   +
                </button>
