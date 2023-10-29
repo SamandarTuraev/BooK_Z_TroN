@@ -38,14 +38,19 @@ const BasketCard = ({
             <img src={imgSrc} alt={imgSrc} style={{ width: "100%" }} />
          </div>
          <div className="single-product-left w-3/5 ps-4 pt-2   ">
-            <h2 className=" mb-2">{bookName}</h2>
+            <h2 className=" mb-2 font-bold">{bookName}</h2>
             <hr />
-            <h3 className=" mt-2"> Author: {author}</h3>
+            <h3 className=" mt-2">
+               {" "}
+               <span className="font-bold">Author</span>: {author}
+            </h3>
             <div>
-               Quantity
+               <span className="mr-4 font-bold"> Quantity </span>
                <button
-                  className="bg-slate-500 px-2  text-white rounded-full "
-                  onClick={() => setCount((prev) => prev - 1)}
+                  className=" px-2   rounded-full border border-solid border-slate-300 text-center"
+                  onClick={() =>
+                     setCount((prev) => (prev == 0 ? prev : prev - 1))
+                  }
                >
                   -
                </button>
@@ -53,12 +58,13 @@ const BasketCard = ({
                   type="number"
                   defaultValue={1}
                   value={count}
-                  className="border-2 border-current w-[50px] m-4"
+                  className="border border-current w-[50px] m-4 text-center font-bold"
                   onChange={(e) => setCount(e.target.value)}
+                  min="0"
                />
                <button
-                  className="bg-slate-500 px-2  text-white rounded-full "
-                  onClick={() => setCount((prev) => prev + 1)}
+                  className=" px-2   rounded-full border border-solid border-slate-300 text-center"
+                  onClick={() => setCount((prev) => Number(prev) + 1)}
                >
                   +
                </button>
@@ -84,7 +90,7 @@ const BasketCard = ({
                   <button
                      className="w-[100%] p-2  text-white rounded"
                      style={{
-                        backgroundColor: "rgb(219, 107, 138)",
+                        backgroundColor: "rgb(255, 182, 73)",
                         cursor: "pointer",
                      }}
                      onClick={() => handleWishlistAdd(_id)}

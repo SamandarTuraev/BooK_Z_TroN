@@ -59,19 +59,30 @@ function SingleProduct({
    };
 
    return (
-      <div className="single-product flex gap-16 mt-32 justify-center ">
+      <div className="single-product flex gap-16 mt-28 justify-center ">
          <div className="single-product-right w-1/4">
             <img src={imgSrc} alt={imgSrc} style={{ width: "100%" }} />
          </div>
          <div className="single-product-left w-1/2 mt-8">
-            <h2 className="text-2xl mb-4">{bookName}</h2>
+            <h2 className="text-2xl mb-4 font-black">{bookName}</h2>
             <hr />
-            <h3 className="text-lg mt-4"> Author: {author}</h3>
-            <p className="mt-4 pr-16"> Description: {description}</p>
-            <h3 className="text-lg mt-4">Rating: {rating}</h3>
-            <h3 className="text-lg mt-4 flex gap-3">
+            <h3 className="text-lg mt-4">
+               {" "}
+               <span className="font-black">Author:</span> {author}
+            </h3>
+            <p className="mt-4 pr-16">
+               {" "}
+               <span className="font-black">Description:</span> {description}
+            </p>
+            <h3 className="text-lg mt-4">
+               <span className="font-black">Rating: </span>
+               {rating}
+            </h3>
+            <h3 className="text-lg mt-4 flex gap-3 font-black">
                Rs{discountedPrice} <del>Rs{originalPrice}</del>
-               <span className="text-red-500">({discountPercent}off%)</span>
+               <span className="text-red-500 text-sm pt-1">
+                  ({discountPercent}off%)
+               </span>
             </h3>
 
             <div className="mt-24 flex gap-4">
