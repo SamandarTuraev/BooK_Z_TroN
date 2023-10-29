@@ -15,7 +15,7 @@ function Header({ isLogged, setIsLogged, cartProducts, wishList }) {
 
    return (
       <header
-         className=" flex   justify-between py-6 px-2  border-b-2 fixed top-0 left-0 right-0 "
+         className=" flex   justify-between py-6 px-4  border-b-2 fixed top-0 left-0 right-0 "
          style={{
             background: "white",
             zIndex: "5",

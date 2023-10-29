@@ -137,8 +137,8 @@ function Shop({
 
    return (
       <>
-         <div className=" flex gap-12 h-[86vh] mt-24">
-            <div className="w-1/4 overflow-y-auto pr-8 ps-1">
+         <div className=" flex gap-12 h-[86vh] mt-24 ps-8">
+            <div className="w-1/4 overflow-y-auto pr-8 ">
                <div className="flex justify-between items-center mb-5 mt-8">
                   <h2 className="text-2xl">Filters</h2>
                   <Button onClick={onClear}>Clear Filter</Button>
@@ -306,7 +306,7 @@ function Shop({
                </div>
             </div>
 
-            <div className="w-3/4 ">
+            <div className="w-3/4 pr-8">
                <h1 className="text-center text-4xl mt-4 mb-8 text-bold">
                   Showing {filteredProducts.length} products
                </h1>

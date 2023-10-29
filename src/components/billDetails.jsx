@@ -4,7 +4,6 @@ import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
 const BillDetails = ({ cartProducts }) => {
-   console.log(cartProducts, "bill");
    const [allDiscount, setAllDiscount] = useState(0);
    const [totalSum, setTotalSum] = useState(0);
 

@@ -6,7 +6,6 @@ import basketIcon from "../Assets/icons/basket-icon.svg";
 import BillDetails from "@/components/billDetails";
 
 const Cart = ({ cartProducts, setCartProducts, wishList, setWishList }) => {
-   console.log(cartProducts, "cart");
    return (
       <>
          {cartProducts.length ? (

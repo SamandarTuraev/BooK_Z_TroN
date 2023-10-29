@@ -9,7 +9,7 @@ function Genres({ setSelectedGenres }) {
       navigate("/shop");
    };
    return (
-      <div className="flex justify-around flex-wrap mb-12">
+      <div className="flex justify-evenly flex-wrap mb-12">
          {genres.map((genre) => (
             <div
                onClick={() => handleClick([genre])}

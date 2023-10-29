@@ -9,7 +9,7 @@ import SingleProduct from "./pages/single-product.jsx";
 import Shop from "./pages/shop.jsx";
 import WishList from "./pages/wishlist.jsx";
 import Login from "./pages/login.jsx";
-import Cart from "./pages/Cart.jsx";
+import Cart from "./pages/cart.jsx";
 import Protected from "./components/protected.jsx";
 import Order from "./pages/order.jsx";
 
@@ -55,94 +55,96 @@ function App() {
 
    return (
       <BrowserRouter>
-         <div className="container relative">
+         <div className=" relative">
             <Header
                isLogged={isLogged}
                setIsLogged={setIsLogged}
                cartProducts={cartProducts}
                wishList={wishList}
             />
-            <Routes>
-               <Route
-                  path="/"
-                  element={
-                     <Home
-                        selectedGenres={selectedGenres}
-                        setSelectedGenres={setSelectedGenres}
-                        wishList={wishList}
-                        setWishList={setWishList}
-                        isLogged={isLogged}
-                     />
-                  }
-               />
-               <Route
-                  path="/shop"
-                  element={
-                     <Protected isLogged={isLogged}>
-                        <Shop
-                           handleLikeBtnClick={handleLikeBtnClick}
-                           products={products}
+            <div>
+               <Routes>
+                  <Route
+                     path="/"
+                     element={
+                        <Home
                            selectedGenres={selectedGenres}
                            setSelectedGenres={setSelectedGenres}
                            wishList={wishList}
                            setWishList={setWishList}
                            isLogged={isLogged}
                         />
-                     </Protected>
-                  }
-               />
-               <Route
-                  path="/product/:productID"
-                  element={
-                     <Protected isLogged={isLogged}>
-                        <SingleProduct
-                           setCartProducts={setCartProducts}
-                           cartProducts={cartProducts}
-                           wishList={wishList}
-                           setWishList={setWishList}
-                        />
-                     </Protected>
-                  }
-               />
-               <Route
-                  path="/wishlist"
-                  element={
-                     <Protected isLogged={isLogged}>
-                        <WishList
-                           wishList={wishList}
-                           setWishList={setWishList}
-                           isLogged={isLogged}
-                        />
-                     </Protected>
-                  }
-               />{" "}
-               <Route
-                  path="/cart"
-                  element={
-                     <Protected isLogged={isLogged}>
-                        <Cart
-                           setCartProducts={setCartProducts}
-                           cartProducts={cartProducts}
-                           wishList={wishList}
-                           setWishList={setWishList}
-                           products={products}
-                        />
-                     </Protected>
-                  }
-               />
-               <Route
-                  path="/order"
-                  element={
-                     <Protected isLogged={isLogged}>
-                        <Order />
-                     </Protected>
-                  }
-               />
-               <Route
-                  path="/login"
-                  element={<Login setIsLogged={setIsLogged} />}
-               />
-            </Routes>
+                     }
+                  />
+                  <Route
+                     path="/shop"
+                     element={
+                        <Protected isLogged={isLogged}>
+                           <Shop
+                              handleLikeBtnClick={handleLikeBtnClick}
+                              products={products}
+                              selectedGenres={selectedGenres}
+                              setSelectedGenres={setSelectedGenres}
+                              wishList={wishList}
+                              setWishList={setWishList}
+                              isLogged={isLogged}
+                           />
+                        </Protected>
+                     }
+                  />
+                  <Route
+                     path="/product/:productID"
+                     element={
+                        <Protected isLogged={isLogged}>
+                           <SingleProduct
+                              setCartProducts={setCartProducts}
+                              cartProducts={cartProducts}
+                              wishList={wishList}
+                              setWishList={setWishList}
+                           />
+                        </Protected>
+                     }
+                  />
+                  <Route
+                     path="/wishlist"
+                     element={
+                        <Protected isLogged={isLogged}>
+                           <WishList
+                              wishList={wishList}
+                              setWishList={setWishList}
+                              isLogged={isLogged}
+                           />
+                        </Protected>
+                     }
+                  />{" "}
+                  <Route
+                     path="/cart"
+                     element={
+                        <Protected isLogged={isLogged}>
+                           <Cart
+                              setCartProducts={setCartProducts}
+                              cartProducts={cartProducts}
+                              wishList={wishList}
+                              setWishList={setWishList}
+                              products={products}
+                           />
+                        </Protected>
+                     }
+                  />
+                  <Route
+                     path="/order"
+                     element={
+                        <Protected isLogged={isLogged}>
+                           <Order />
+                        </Protected>
+                     }
+                  />
+                  <Route
+                     path="/login"
+                     element={<Login setIsLogged={setIsLogged} />}
+                  />
+               </Routes>{" "}
+            </div>
          </div>
       </BrowserRouter>
    );

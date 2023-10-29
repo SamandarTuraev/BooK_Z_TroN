@@ -35,7 +35,7 @@ function SingleProduct({
    useEffect(() => {
       products.forEach((data) => {
          if (data._id == id) {
-            setProduct({ data, quantity: 1 });
+            setProduct(data);
          }
       });
    }, [products, product]);
@@ -61,7 +61,7 @@ function SingleProduct({
    return (
       <div className="single-product flex gap-16 mt-28 justify-center ">
          <div className="single-product-right w-1/4">
-            <img src={imgSrc} alt={imgSrc} style={{ width: "100%" }} />
+            <img src={imgSrc} alt={imgSrc} style={{ height: "75vh" }} />
          </div>
          <div className="single-product-left w-1/2 mt-2">
             <h2 className="text-2xl mb-4 font-black">{bookName}</h2>

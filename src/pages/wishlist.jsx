@@ -13,7 +13,7 @@ function WishList({ wishList, setWishList, isLogged }) {
    return (
       <>
          {wishList.length ? (
-            <div className="flex  mt-28 flex-wrap gap-10">
+            <div className="flex  mt-28 flex-wrap gap-10 ps-8 pr-8">
                {wishList.map((wishItem) => (
                   <Card
                      key={wishItem._id}
