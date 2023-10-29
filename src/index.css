@@ -2,9 +2,18 @@
    font-family: comfortaa;
    src: url(./fonts/ComfortaaUbuntu/Comfortaa/Comfortaa-VariableFont_wght.ttf);
 }
-html {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li,
+a {
    font-family: comfortaa;
 }
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
