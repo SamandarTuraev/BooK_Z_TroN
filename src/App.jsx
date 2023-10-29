@@ -55,7 +55,7 @@ function App() {
 
    return (
       <BrowserRouter>
-         <div className="container">
+         <div className="container relative">
             <Header
                isLogged={isLogged}
                setIsLogged={setIsLogged}

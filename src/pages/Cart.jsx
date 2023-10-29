@@ -8,7 +8,7 @@ const Cart = ({ cartProducts, setCartProducts, wishList, setWishList }) => {
    return (
       <>
          {cartProducts.length ? (
-            <div className="flex justify-center gap-16 mt-6">
+            <div className="flex justify-center gap-16 mt-32">
                <div className="w-2/5">
                   {cartProducts.map((product, idx) => (
                      <BasketCard
@@ -27,7 +27,7 @@ const Cart = ({ cartProducts, setCartProducts, wishList, setWishList }) => {
                </div>
             </div>
          ) : (
-            <div className="py-16 mw-[100%] flex flex-col justify-center items-center">
+            <div className="py-16 mw-[100%] flex flex-col justify-center items-center mt-24">
                <h1 className="text-2xl">
                   <b>0 items in Cart</b>
                </h1>

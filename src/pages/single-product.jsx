@@ -59,11 +59,11 @@ function SingleProduct({
    };
 
    return (
-      <div className="single-product flex gap-12 mt-5">
+      <div className="single-product flex gap-16 mt-32 justify-center ">
          <div className="single-product-right w-1/4">
             <img src={imgSrc} alt={imgSrc} style={{ width: "100%" }} />
          </div>
-         <div className="single-product-left w-3/4">
+         <div className="single-product-left w-1/2 mt-8">
             <h2 className="text-2xl mb-4">{bookName}</h2>
             <hr />
             <h3 className="text-lg mt-4"> Author: {author}</h3>

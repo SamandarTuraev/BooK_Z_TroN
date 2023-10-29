@@ -13,7 +13,7 @@ function WishList({ wishList, setWishList, isLogged }) {
    return (
       <>
          {wishList.length ? (
-            <div className="flex  mt-5 flex-wrap gap-10">
+            <div className="flex  mt-28 flex-wrap gap-10">
                {wishList.map((wishItem) => (
                   <Card
                      key={wishItem._id}
@@ -24,7 +24,7 @@ function WishList({ wishList, setWishList, isLogged }) {
                ))}
             </div>
          ) : (
-            <div className="py-16 mw-[100%] flex flex-col justify-center items-center">
+            <div className="py-16 mw-[100%] flex flex-col justify-center items-center mt-24">
                <h1 className="text-2xl">
                   <b>0 items in Wishlist</b>
                </h1>

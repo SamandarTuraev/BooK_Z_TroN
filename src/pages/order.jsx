@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import orderIcon from "../Assets/icons/order-icon.svg";
 function Order() {
    return (
-      <div className="py-16 mw-[100%] flex flex-col justify-center items-center">
+      <div className="py-16 mw-[100%] flex flex-col justify-center items-center mt-24">
          <h1 className="text-2xl">
             <b>0 items in your Orders</b>
          </h1>

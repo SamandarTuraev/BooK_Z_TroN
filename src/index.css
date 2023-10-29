@@ -1,3 +1,10 @@
+@font-face {
+   font-family: comfortaa;
+   src: url(./fonts/ComfortaaUbuntu/Comfortaa/Comfortaa-VariableFont_wght.ttf);
+}
+html {
+   font-family: comfortaa;
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -74,9 +81,12 @@
       @apply bg-background text-foreground;
    }
 }
-html {
-   font-size: font-sans;
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
 }
+
 .Alink {
    position: relative;
 }
@@ -90,4 +100,25 @@ html {
    background: #fa1616;
    border: 1px solid white;
    border-radius: 50%;
+}
+.footer-container {
+   background-color: rgb(40, 44, 52);
+   color: #fff;
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   gap: 50px;
+   justify-content: center;
+   margin-top: 100px;
+   min-height: 50vh;
+   padding: 6rem 10rem;
+   width: 100%;
+}
+
+.footer-container h2 {
+   font-size: 2.4rem;
+}
+.footer-container p {
+   color: #8f8f8f;
+   font-size: 1.6rem;
+   line-height: 2.7rem;
 }

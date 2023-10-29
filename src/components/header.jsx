@@ -14,7 +14,13 @@ function Header({ isLogged, setIsLogged, cartProducts, wishList }) {
    let path = location.pathname;
 
    return (
-      <header className="flex justify-between py-6 px-2  border-b-2">
+      <header
+         className=" flex   justify-between py-6 px-2  border-b-2 fixed top-0 left-0 right-0 "
+         style={{
+            background: "white",
+            zIndex: "5",
+         }}
+      >
          <Link to={"/"} className="rounded-lg bg-yellow-400 p-2">
             BooK_Z_TroN
          </Link>
