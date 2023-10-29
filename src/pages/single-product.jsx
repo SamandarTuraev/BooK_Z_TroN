@@ -35,7 +35,7 @@ function SingleProduct({
    useEffect(() => {
       products.forEach((data) => {
          if (data._id == id) {
-            setProduct(data);
+            setProduct({ data, quantity: 1 });
          }
       });
    }, [products, product]);
@@ -63,7 +63,7 @@ function SingleProduct({
          <div className="single-product-right w-1/4">
             <img src={imgSrc} alt={imgSrc} style={{ width: "100%" }} />
          </div>
-         <div className="single-product-left w-1/2 mt-8">
+         <div className="single-product-left w-1/2 mt-2">
             <h2 className="text-2xl mb-4 font-black">{bookName}</h2>
             <hr />
             <h3 className="text-lg mt-4">
@@ -85,7 +85,7 @@ function SingleProduct({
                </span>
             </h3>
 
-            <div className="mt-24 flex gap-4">
+            <div className="mt-16 flex gap-4">
                {wishList.find((wishItem) => wishItem._id === id) ? (
                   <button
                      className="w-1/2 p-2  text-white rounded "

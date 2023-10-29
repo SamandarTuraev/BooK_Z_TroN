@@ -29,10 +29,10 @@ const BillDetails = ({ cartProducts }) => {
          <h2 className="text-center text-4xl  mb-4"> Bill Details</h2>
          <div className="bg-black h-[0.5px]" />
          <div>
-            {cartProducts.map((cart) => {
+            {cartProducts?.map((cart) => {
                return (
                   <div key={cart._id} className="flex mt-8 mb-8">
-                     <h3 className="w-[50%] text-center">{cart.bookName}</h3>{" "}
+                     <h3 className="w-[50%] text-center">{cart.bookName}</h3>
                      <h3 className="w-[25%] text-center">X {cart.quantity}</h3>
                      <h3 className="w-[25%] text-center">
                         R{Number(cart.quantity) * Number(cart.discountedPrice)}
