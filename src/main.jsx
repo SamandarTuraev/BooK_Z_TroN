@@ -7,6 +7,6 @@ import { Toaster } from "./components/ui/toaster";
 ReactDOM.createRoot(document.getElementById("root")).render(
    <React.StrictMode>
       <App />
-      <Toaster />
+      {/* <Toaster /> */}
    </React.StrictMode>
 );
